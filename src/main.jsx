@@ -5,14 +5,24 @@ import App from "./App.jsx";
 import { SidebarProvider
  } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/AppSidebar";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter,useLocation } from "react-router-dom";
+const AppWrapper = () => {
+  const location = useLocation();
+  const showSideBar = location.pathname !== "/login"; 
+
+  return (
+    <>
+      {showSideBar && <AppSidebar />} 
+      <App />
+    </>
+  );
+};
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <SidebarProvider>
-        <AppSidebar />
-      
-        <App />
+       <AppWrapper/> 
       </SidebarProvider>
       </BrowserRouter>
   </StrictMode>

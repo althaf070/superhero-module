@@ -5,8 +5,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useAuthStore } from '@/store/useAuthStore';
+
 
 export default function LoginPage() {
+  const {login} = useAuthStore()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -17,24 +20,15 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-
     try {
-      // Simulating an API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Check for a valid email and password (this is just a simple check for demonstration)
-      if (email === 'user@example.com' && password === 'password') {
-        // Redirect to dashboard on successful login
-        navigate('/dashboard');
-      } else {
-        setError('Invalid email or password');
-      }
+      login(email,password)
+        navigate('/');
     } catch (err) {
       setError('An error occurred. Please try again.'+err);
     } finally {
       setIsLoading(false);
     }
-  };
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
