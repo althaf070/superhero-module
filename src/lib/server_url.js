@@ -1,1 +1,1 @@
-export const SERVER_URL = 'http://localhost:3000/api'
+export const SERVER_URL = 'https://superhero-backend-7b38.onrender.com/api'
