@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { SERVER_URL } from "@/lib/server_url";
 
 axios.defaults.withCredentials = true;
 // axios.defaults.baseURL = "";
@@ -14,7 +15,7 @@ export const useAuthStore = create((set) => ({
   login: async (email, password) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post("http://localhost:3000/api/hero-login", {
+      const response = await axios.post(`${SERVER_URL}/hero-login`, {
         email,
         password,
       });
@@ -57,7 +58,7 @@ export const useAuthStore = create((set) => ({
   checkAuth: async () => {
     set({ isCheckingAuth: true, error: null });
     try {
-      const response = await axios.get("http://localhost:3000/api/check-hero");
+      const response = await axios.get(`${SERVER_URL}/check-hero`);
       set({
         user: response.data.user,
         isAuthenticated: true,
