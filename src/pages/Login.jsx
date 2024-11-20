@@ -10,8 +10,8 @@ import { useAuthStore } from '@/store/useAuthStore';
 
 export default function LoginPage() {
   const {login,isLoading} = useAuthStore()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('aegis123@gmail.com');
+  const [password, setPassword] = useState('123456');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
