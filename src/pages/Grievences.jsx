@@ -36,6 +36,7 @@ const Grievances = () => {
   const [sortBy, setSortBy] = useState("dateSubmitted");
   const [sortOrder, setSortOrder] = useState("desc");
 
+  // fetching all grievences with filter
   const fetchGrievances = async () => {
     try {
       const response = await axios.get(`${SERVER_URL}/grievences`, {
@@ -53,6 +54,7 @@ const Grievances = () => {
     }
   };
 
+  // handling sorting
   const handleSort = (field) => {
     if (sortBy === field) {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -62,6 +64,7 @@ const Grievances = () => {
     }
   };
 
+  // changing status
   const handleUpdate= async(id,updateStatus)=>{
 try {
 await axios.patch(`${SERVER_URL}/update/${id}`,{status:updateStatus})

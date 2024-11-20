@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 const Users = () => {
   const [users, setusers] = useState([])
+  // fetching all users
   const fetchUsers = async()=> {
     const response = await axios.get(`${SERVER_URL}/users`)
     if(response.data.success){
@@ -21,6 +22,7 @@ const Users = () => {
   }, [])
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 p-4 gap-5">
+      {/* mapping users */}
      {users?.length > 0 ? (
       users.map((user)=> (
         <Card className="col-span-1 md:col-span-3 bg-slate-800 text-white" key={user._id}>
