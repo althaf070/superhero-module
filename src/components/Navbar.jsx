@@ -4,6 +4,7 @@ import { BarChart3, Layout, User2, Search, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSearch } from '@/context/useSearch';
+import { useAuthStore } from '@/store/useAuthStore';
 
 const navItems = [
   { name: 'Home', href: '/', icon: Layout },
@@ -14,6 +15,7 @@ const navItems = [
 export default function Navbar() {
   const location = useLocation();
   const { searchQuery, handleSearch } = useSearch(); 
+  const {isAuthenticated,logout} = useAuthStore()
   const [query, setquery] = useState(searchQuery);
 
   const handleSearchSubmit = () => {
@@ -55,10 +57,10 @@ export default function Navbar() {
               onClick={handleSearchSubmit} 
             />
           </div>
-          <Button variant="ghost" size="icon">
+          {isAuthenticated && <Button variant="ghost" size="icon" onClick={logout}>
             <LogOut className="h-5 w-5" />
             <span className="sr-only">Logout</span>
-          </Button>
+          </Button>}
         </div>
       </div>
     </nav>
