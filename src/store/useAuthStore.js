@@ -40,7 +40,7 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     set({ isLoading: true, error: null });
     try {
-      await axios.post(`${SERVER_URL}/logout`);
+      await axios.post(`${SERVER_URL}/hero-logout`);
       set({
         user: null,
         isAuthenticated: false,
