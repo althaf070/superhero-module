@@ -152,25 +152,25 @@ fetchGrievances()
             {grievances.map((grievance) => (
               <TableRow key={grievance._id}>
                 <TableCell className="font-medium">
-                  {grievance.userId.username}
+                  {grievance?.userId?.username}
                 </TableCell>
-                <TableCell>{grievance.grievanceType}</TableCell>
-                <TableCell>{grievance.location}</TableCell>
+                <TableCell>{grievance?.grievanceType}</TableCell>
+                <TableCell>{grievance?.location}</TableCell>
                 <TableCell>
-                  {new Date(grievance.dateSubmitted).toLocaleDateString()}
+                  {new Date(grievance?.dateSubmitted).toLocaleDateString()}
                 </TableCell>
                 <TableCell>
                   <HoverCard>
                     <HoverCardTrigger>View Notes</HoverCardTrigger>
                     <HoverCardContent>
-                      <ScrollArea>{grievance.description}</ScrollArea>
+                      <ScrollArea>{grievance?.description}</ScrollArea>
                     </HoverCardContent>
                   </HoverCard>
                 </TableCell>
                 <TableCell className="text-right">
-                 {grievance.status === 'Pending'  && <Button onClick={()=> handleUpdate(grievance._id,"In Progress")}>Accept</Button>}
-                 {grievance.status === 'Pending'  && <Button variant="destructive" className="ml-2" onClick={()=> handleUpdate(grievance._id,"Canceled")}>Cancel</Button>}
-                 {grievance.status === 'In Progress' && <Button onClick={()=> handleUpdate(grievance._id,"Resolved")}>Resolved</Button>}
+                 {grievance.status === 'Pending'  && <Button onClick={()=> handleUpdate(grievance?._id,"In Progress")}>Accept</Button>}
+                 {grievance.status === 'Pending'  && <Button variant="destructive" className="ml-2" onClick={()=> handleUpdate(grievance?._id,"Canceled")}>Cancel</Button>}
+                 {grievance.status === 'In Progress' && <Button onClick={()=> handleUpdate(grievance?._id,"Resolved")}>Resolved</Button>}
                  {grievance.status === "Resolved" && <Badge className={"bg-green-600"}>Case Completed</Badge>}
                  {grievance.status === "Canceled" && <Badge className={"bg-red-600"}>Case Canceled</Badge>}
                 </TableCell>
