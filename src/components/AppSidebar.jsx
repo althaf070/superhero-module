@@ -1,4 +1,4 @@
-import { Home, SearchCodeIcon, Settings, User2 } from "lucide-react"
+import { Home, SearchCodeIcon, User2 } from "lucide-react"
 import { Link } from "react-router-dom"
 import {
   Sidebar,
@@ -28,11 +28,7 @@ const items = [
     url: "/users",
     icon: User2,
   },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
+ 
 ]
 
 export function AppSidebar() {

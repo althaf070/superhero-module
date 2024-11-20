@@ -19,7 +19,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError('');
     try {
-      login(email,password)
+     await login(email,password)
         navigate('/');
     } catch (err) {
       setError('An error occurred. Please try again.'+err);
