@@ -9,24 +9,20 @@ import { useAuthStore } from '@/store/useAuthStore';
 
 
 export default function LoginPage() {
-  const {login} = useAuthStore()
+  const {login,isLoading} = useAuthStore()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     setError('');
     try {
       login(email,password)
         navigate('/');
     } catch (err) {
       setError('An error occurred. Please try again.'+err);
-    } finally {
-      setIsLoading(false);
     }
   }
 

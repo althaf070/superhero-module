@@ -6,15 +6,19 @@ import LoginPage from "./pages/Login";
 import { useState } from "react";
 import { SearchProvider } from "./context/useSearch";
 import AuthenticatedLayout from "./components/AuthenticatedLayout";
+import { useAuthStore } from "./store/useAuthStore";
+import { Loader2 } from "lucide-react";
 
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
+  const {isLoading} = useAuthStore()
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
-
+if(isLoading) return <div className="flex items-center justify-center w-full min-h-[70vh]">
+  <Loader2 className="animate-spin" size={34}/>
+</div>
   return (
     <div className="w-full flex flex-col h-full">
       <SearchProvider>

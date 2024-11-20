@@ -11,7 +11,7 @@ const AuthenticatedLayout = () => {
 useEffect(() => {
 checkAuth()
 }, [checkAuth])
-if(isCheckingAuth) return <Loader className='animate-spin ' size={44}/>
+if(isCheckingAuth) return <div className='w-full min-h-[70vh] flex items-center justify-center'><Loader className='animate-spin ' size={44}/></div>
 if(!isAuthenticated) return <Navigate to={'/login'} replace/>
   return (
     <>
